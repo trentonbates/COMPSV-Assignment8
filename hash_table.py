@@ -96,71 +96,36 @@ class HashTable:
             
             print(f'Index {i}: {result}')
 
+contact_1 = Contact("Riley", "123-456-7890")
+print(contact_1) # Riley: 123-456-7890
+
+contact_1 = Contact("Riley", "123-456-7890")
+node_1 = Node(contact_1.name, contact_1)
+print(node_1.key) # Riley
+print(node_1.value) # Riley: 123-456-7890
+print(node_1.next) # None
+
 table = HashTable(10)
 table.print_table()
-'''
-Index 0: Empty
-Index 1: Empty
-Index 2: Empty
-Index 3: Empty
-Index 4: Empty
-Index 5: Empty
-Index 6: Empty
-Index 7: Empty
-Index 8: Empty
-Index 9: Empty 
-'''
+
 # Add some values
-table.insert("John", Contact("John", "909-876-1234"))
-table.insert("Rebecca", Contact("Rebecca", "111-555-0002"))
-# Print the new table structure
+table.insert("John", "909-876-1234")
+table.insert("Rebecca", "111-555-0002")
+# Print the new table structure 
 table.print_table()
-'''
-Index 0: Empty
-Index 1: Empty
-Index 2: Empty
-Index 3: Empty
-Index 4: Empty
-Index 5: Empty
-Index 6: Empty
-Index 7: - Rebecca: 111-555-0002 
-Index 8: Empty
-Index 9: - John: 909-876-1234 
-'''
+
 # Search for a value
 contact = table.search("John") 
 print("\nSearch result:", contact)  # Search result: John: 909-876-1234
 
 # Edge Case #1 - Hash Collisons (assuming these hash to the same index) 
-table.insert("Amy", Contact("Amy", "111-222-3333")) 
-table.insert("May", Contact("May", "222-333-1111"))  # May collide with Amy depending on hash function 
+table.insert("Amy", "111-222-3333") 
+table.insert("May", "222-333-1111")  # May collide with Amy depending on hash function 
 table.print_table()
-'''
-Index 0: Empty
-Index 1: Empty
-Index 2: Empty
-Index 3: Empty
-Index 4: Empty
-Index 5: - Amy: 111-222-3333 - May: 222-333-1111 
-Index 6: Empty
-Index 7: - Rebecca: 111-555-0002 
-Index 8: Empty
-Index 9: - John: 909-876-1234 
-'''
+
 # Edge Case #2 - Duplicate Keys 
-table.insert("Rebecca", Contact("Rebecca", "999-444-9999"))  # Should update Rebecca's number 
+table.insert("Rebecca", "999-444-9999")  # Should update Rebecca's number 
 table.print_table()
-'''
-Index 0: Empty
-Index 1: Empty
-Index 2: Empty
-Index 3: Empty
-Index 4: Empty
-Index 5: - Amy: 111-222-3333 - May: 222-333-1111 
-Index 6: Empty
-Index 7: - Rebecca: 999-444-9999 
-Index 8: Empty
-Index 9: - John: 909-876-1234 
-'''
+
 # Edge Case #3 - Searching for a value not in the table
 print(table.search("Chris")) # None
