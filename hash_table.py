@@ -96,6 +96,37 @@ class HashTable:
             
             print(f'Index {i}: {result}')
 
+'''
+Why is a hash table the right structure for fast lookups?
+
+    A hash table is ideal for fast lookups because it uses a hash function
+    to convert a key (in this case, a contact's name) into an index within
+    an array. This allows for direct access to stored data, typically providing
+    average-case time complexity of O(1) for insertion, search, and update
+    operations. Unlike lists, which require linear searches (O(n)), a hash table
+    can locate a contact almost instantly, regardless of how many contacts exist.
+    This makes it especially useful for applications like contact management, where
+    quick retrieval of information by a unique key (such as a name) is essential.
+
+How did you handle collisions?
+
+    Collisions occur when two different keys hash to the same index. In this
+    implementation, collisions are handled using separate chaining with linked
+    lists. Each index in the hash table stores a linked list of Node objects.
+    When a new contact hashes to an occupied index, it is added to the end of the
+    linked list. During lookups or updates, the program traverses this list to find
+    the matching key. This method is simple, efficient, and prevents data loss caused
+    by overwriting existing entries.
+
+When might an engineer choose a hash table over a list or tree?
+
+    An engineer would choose a hash table when speed and simplicity are more important
+    than maintaining order. Hash tables excel in applications that require frequent
+    insertions, deletions, and lookups by key, such as dictionaries, caches, or contact
+    books. In contrast, lists are better for maintaining sequential data, and trees are
+    preferred when sorted order or range queries are required.
+'''
+
 contact_1 = Contact("Riley", "123-456-7890")
 print(contact_1) # Riley: 123-456-7890
 
