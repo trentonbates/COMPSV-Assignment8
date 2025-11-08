@@ -91,7 +91,7 @@ class HashTable:
                 continue
 
             while current:
-                result += f' - {current.value}'
+                result += f' - {current.key}: {current.value}'
                 current = current.next
             
             print(f'Index {i}: {result}')
